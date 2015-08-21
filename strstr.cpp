@@ -22,7 +22,7 @@
 void build_next(string& needle, vector<int>& next){
     int n_sz = needle.length();
     int k = -1;
-    for(int i=0; i<n_sz;){
+    for(int i=0; i<n_sz-1;){
         if(k == -1 || needle[i] == needle[k]){
             k++;
             next[++i] = k;
@@ -36,7 +36,7 @@ int strStr(string haystack, string needle){
     int h_sz = haystack.length(), n_sz = needle.length();
     if(n_sz>h_sz) return -1;
     if(n_sz == 0) return 0;
-    vector<int> next(n_sz+1, -1);
+    vector<int> next(n_sz, -1);
     build_next(needle, next);
     int h_curr = 0, n_curr = 0;
     while(h_curr<h_sz){
